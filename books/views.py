@@ -5,7 +5,7 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 
-class CreateBook(ModelViewSet):
+class BookView(ModelViewSet):
     serializer_class = BookSerializer
 
     def get_queryset(self):
@@ -28,11 +28,6 @@ class CreateBook(ModelViewSet):
 
         # پاسخ مناسبی برای کاربر ارسال می‌شود
         return Response(serializer.data, status=status.HTTP_201_CREATED)
-
-class BookId(viewsets.ModelViewSet):
-    queryset = Book.objects.all()
-    serializer_class = BookSerializer
-
     def retrieve(self, request, *args, **kwargs):
         instance = self.get_object()
         serializer = self.get_serializer(instance)
